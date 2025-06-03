@@ -1,0 +1,12 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "outDir": "./lib",
+    "sourceMap": true,
+    "isolatedModules": true,
+    "paths": {
+      "validate-env": ["./src/index.ts"]
+    }
+  }
+}
