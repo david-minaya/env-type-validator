@@ -4,9 +4,6 @@
   "compilerOptions": {
     "outDir": "./lib",
     "sourceMap": true,
-    "isolatedModules": true,
-    "paths": {
-      "validate-env": ["./src/index.ts"]
-    }
+    "isolatedModules": true
   }
 }

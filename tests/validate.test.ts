@@ -1,4 +1,4 @@
-import { validateEnv, string, number, boolean, float } from '../src';
+import { validate, string, number, boolean, float } from '../src';
 
 const envBackup = process.env;
 
@@ -8,12 +8,11 @@ beforeAll(() => {
   process.env.ENABLE_LOGS = 'yes';
   process.env.DECIMAL = '141.363';
   process.env.CUSTOM = '1, 2, 3, 4, 5';
-  process.env.NAME = '1, 2, 3, 4, 5';
 });
 
 it('should validate the environment variables', () => {
 
-  const env = validateEnv({
+  const env = validate({
     DB_NAME: string(),
     DB_PASS: string({ optional: true }),
     HOST: string(),
@@ -42,7 +41,7 @@ it('Should throw an exception if some environment variables are invalid.', () =>
 
   expect(() => {
 
-    const env = validateEnv({
+    const env = validate({
       DB_NAME: string(),
       DB_PASS: string({ optional: true }),
       HOST: string(),

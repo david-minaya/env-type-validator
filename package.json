@@ -1,7 +1,7 @@
 {
-  "name": "validate-env",
+  "name": "env-type-validator",
   "version": "1.0.0",
-  "description": "Environment variables validation library",
+  "description": "A validation library used to validate, type, and parse environment variables in Node.",
   "author": "David Minaya",
   "license": "ISC",
   "main": "./lib/index.js",
@@ -16,8 +16,11 @@
   },
   "keywords": [
     "env",
+    ".env",
+    "dotenv",
     "validate",
     "validation",
+    "validator",
     "type",
     "node"
   ],

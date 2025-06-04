@@ -1,6 +1,6 @@
-# Validate Env
+# Env Type Validator
 
-A validation library used to validate and parse environment variables in Node.
+A validation library used to validate, type, and parse environment variables in Node.
 
 ### Content
 
@@ -16,24 +16,24 @@ A validation library used to validate and parse environment variables in Node.
 #### npm
 
 ```
-npm install validate-env
+npm install env-type-validator
 ```
 
 #### yarn
 
 ```
-yarn add validator
+yarn add env-type-validator
 ```
 
 #### pnpm
 
 ```
-pnpm i validator
+pnpm i env-type-validator
 ```
 
 ## Usage
 
-This library validate the environment variables, if any variable is invalid, it throws an exception. Otherwise, it returns a typed and parsed object containing the validated environment variables.
+This library validates environment variables. If any variable is invalid, it throws an exception. Otherwise, it returns a typed and parsed object containing the validated environment variables.
 
 By default, all variables are required. To make a variable optional, set the `optional` option to `true` in the validator function. Optional variables are only validated if they are defined, if the variable is `undefined`, the validation is skipped. If a `defaultValue` is provided for an optional variable, it will be used when the variable is not set.
 
@@ -51,9 +51,9 @@ DECIMAL=141.363
 ##### Validation file
 
 ```ts
-import validateEnv, { string, number, boolean } from 'validate-env';
+import validate, { string, number, boolean } from 'env-type-validator';
 
-const env = validateEnv({
+const env = validate({
   DB_NAME: string(),
   DB_PASS: string({ optional: true }),
   HOST: string(),
@@ -92,11 +92,38 @@ For example:
 
 ## Validators
 
-List of built-in validators. You can also create your own custom validator; see the [Custom Validator](#custom-validator) section for more information.
+List of built-in validators. You can also create your own custom validator; see the [Custom validator](#custom-validator) section for more information.
 
-> We use the [validator.js](https://www.npmjs.com/package/validator) library to do some validations, such as: email, url, base64, etc.
+> We use [validator.js](https://www.npmjs.com/package/validator) for some of the validations.
 
-### alpha()
+#### Built-in validators:
+
+- [alpha](#alpha)
+- [alphanumeric](#alphanumeric)
+- [ascii](#ascii)
+- [base64](#base64)
+- [boolean](#boolean)
+- [date](#date)
+- [email](#email)
+- [enumm](#enumm)
+- [float](#float)
+- [hash](#hash)
+- [hex](#hex)
+- [ip](#ip)
+- [ipRange](#ipRange)
+- [iso8601](#iso8601)
+- [json](#json)
+- [jwt](#jwt)
+- [mac](#mac)
+- [number](#number)
+- [numeric](#numeric)
+- [port](#port)
+- [regex](#regex)
+- [string](#string)
+- [url](#url)
+- [uuid](#uuid)
+
+### `alpha()`
 
 Validate if the environment variable value only contains letters (a-zA-Z).
 
@@ -108,7 +135,7 @@ Validate if the environment variable value only contains letters (a-zA-Z).
 - **ignore**: Characters to be ignored in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### alphanumeric()
+### `alphanumeric()`
 
 Validate if the environment variable value only contains alphanumeric values (a-zA-Z0-9).
 
@@ -120,7 +147,7 @@ Validate if the environment variable value only contains alphanumeric values (a-
 - **ignore**: Characters to be ignored in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### ascii()
+### `ascii()`
 
 Validate if the environment variable value contains valid ASII characters.
 
@@ -130,7 +157,7 @@ Validate if the environment variable value contains valid ASII characters.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### base64()
+### `base64()`
 
 Validate if the environment variable value contains a valid base64 value.
 
@@ -141,7 +168,7 @@ Validate if the environment variable value contains a valid base64 value.
 - **urlSafe**: Validate if the value is url safe.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### boolean()
+### `boolean()`
 
 Validate if the environment variable value is boolean and parse it to boolean.
 
@@ -151,7 +178,7 @@ Validate if the environment variable value is boolean and parse it to boolean.
 - **trueValue**: The value that will be compared to the variable to determine if it is true or false. Default "true".
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### date()
+### `date()`
 
 Validate if the environment variable value contains a valid date.
 
@@ -163,7 +190,7 @@ Validate if the environment variable value contains a valid date.
 - **delimiters**: An array of allowed date delimiters, default: ['/', '-'].
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### email()
+### `email()`
 
 Validate if the environment variable value is a valid email.
 
@@ -183,7 +210,7 @@ Validate if the environment variable value is a valid email.
 - **blacklistedChars**: If blacklisted_chars receives a string, then the validator will reject emails that include any of the characters in the string, in the name part.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### enumm()
+### `enumm()`
 
 Validate if the environment variable value is one of the values of the enum.
 
@@ -193,7 +220,7 @@ Validate if the environment variable value is one of the values of the enum.
 - **enum**: The list of values used to validate the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### float()
+### `float()`
 
 Validate if the environment variable value is a valid float number and parse it to float.
 
@@ -204,7 +231,7 @@ Validate if the environment variable value is a valid float number and parse it 
 - **max**: The max value allowed of the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### hash()
+### `hash()`
 
 Validate if the environment variable value is a valid hash.
 
@@ -214,7 +241,7 @@ Validate if the environment variable value is a valid hash.
 - **algorithm**: The algorithm used to validate the hash.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### hex()
+### `hex()`
 
 Validate if the environment variable value is a valid hexadecimal value.
 
@@ -224,7 +251,7 @@ Validate if the environment variable value is a valid hexadecimal value.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### ip()
+### `ip()`
 
 Validate if the environment variable value is a valid IP address.
 
@@ -234,7 +261,7 @@ Validate if the environment variable value is a valid IP address.
 - **version**: The IP version used to validate the IP.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### ipRange()
+### `ipRange()`
 
 Validate if the environment variable value is a valid IP range.
 
@@ -244,7 +271,7 @@ Validate if the environment variable value is a valid IP range.
 - **version**: The IP version used to validate the IP range.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### iso8601()
+### `iso8601()`
 
 Validate if the environment variable value is a valid ISO8601 date.
 
@@ -255,7 +282,7 @@ Validate if the environment variable value is a valid ISO8601 date.
 - **strictSeparator**: If it's true, date strings with date and time separated by anything other than a T will be invalid.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### json()
+### `json()`
 
 Validate if the environment variable value is a valid JSON and parse it using JSON.parse.
 
@@ -264,7 +291,7 @@ Validate if the environment variable value is a valid JSON and parse it using JS
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### jwt()
+### `jwt()`
 
 Validate if the environment variable value is a valid JWT token.
 
@@ -273,7 +300,7 @@ Validate if the environment variable value is a valid JWT token.
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### mac()
+### `mac()`
 
 Validate if the environment variable value is a valid MAC address.
 
@@ -285,7 +312,7 @@ Validate if the environment variable value is a valid MAC address.
 - **eui**: Setting `eui` allows for validation against EUI-48 or EUI-64 instead of both.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### number()
+### `number()`
 
 Validate if the environment variable value is a valid number and parse it to number.
 
@@ -296,7 +323,7 @@ Validate if the environment variable value is a valid number and parse it to num
 - **max**: The max value allowed of the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### numeric()
+### `numeric()`
 
 Validate if the environment variable value is numeric value.
 
@@ -307,7 +334,7 @@ Validate if the environment variable value is numeric value.
 - **locale**: Locale used in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### port()
+### `port()`
 
 Validate if the environment variable value is a valid PORT.
 
@@ -316,7 +343,7 @@ Validate if the environment variable value is a valid PORT.
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### regex()
+### `regex()`
 
 Validate if the environment variable value is a valid string.
 
@@ -326,7 +353,7 @@ Validate if the environment variable value is a valid string.
 - **regex**: The regex used to validate the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### string()
+### `string()`
 
 Validate if the environment variable value is a valid string.
 
@@ -336,7 +363,7 @@ Validate if the environment variable value is a valid string.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### url()
+### `url()`
 
 Validate if the environment variable value is a valid url.
 
@@ -361,7 +388,7 @@ Validate if the environment variable value is a valid url.
 - **maxAllowedLength**: if set, isURL will not allow URLs longer than the specified value (default is 2084 that IE maximum URL length).
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### uuid()
+### `uuid()`
 
 Validate if the environment variable value is a valid UUID.
 
@@ -385,7 +412,7 @@ Example:
 
 // COLORS=red,blue,white,yellow
 
-const env = validateEnv({
+const env = validate({
   COLORS: {
     validate: (key, value) => {
       return { 

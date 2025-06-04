@@ -1,8 +1,8 @@
-import { validateEnv as validate } from './validateEnv';
+import { validate } from './validate';
 
 export default validate;
-export const validateEnv = validate;
 
+export * from './validate';
 export * from './validators/alpha';
 export * from './validators/alphanumeric';
 export * from './validators/ascii';

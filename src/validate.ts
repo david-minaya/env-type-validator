@@ -33,7 +33,7 @@ type Return<T extends EnvSchema> = {
  * **Validation**
  * 
  * ```
- *  const env = validateEnv({
+ *  const env = validate({
  *    DB_NAME: string(),
  *    DB_PASS: string({ optional: true }),
  *    HOST: string(),
@@ -56,7 +56,7 @@ type Return<T extends EnvSchema> = {
  *  }
  * ```
  */
-export function validateEnv<T extends EnvSchema>(schema: T): { [k in keyof Return<T>]: Return<T>[k] } {
+export function validate<T extends EnvSchema>(schema: T): { [k in keyof Return<T>]: Return<T>[k] } {
 
   const result: { [key: string]: unknown } = { };
 
