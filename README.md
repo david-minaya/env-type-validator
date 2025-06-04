@@ -13,19 +13,19 @@ A validation library used to validate, type, and parse environment variables in 
 
 ## Installation
 
-#### npm
+##### npm
 
 ```
 npm install env-type-validator
 ```
 
-#### yarn
+##### yarn
 
 ```
 yarn add env-type-validator
 ```
 
-#### pnpm
+##### pnpm
 
 ```
 pnpm i env-type-validator
@@ -123,11 +123,11 @@ List of built-in validators. You can also create your own custom validator; see 
 - [url](#url)
 - [uuid](#uuid)
 
-### `alpha()`
+#### `alpha()`
 
 Validate if the environment variable value only contains letters (a-zA-Z).
 
-#### *Options*
+###### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
@@ -135,11 +135,11 @@ Validate if the environment variable value only contains letters (a-zA-Z).
 - **ignore**: Characters to be ignored in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `alphanumeric()`
+#### `alphanumeric()`
 
 Validate if the environment variable value only contains alphanumeric values (a-zA-Z0-9).
 
-#### *Options*
+###### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
@@ -147,42 +147,42 @@ Validate if the environment variable value only contains alphanumeric values (a-
 - **ignore**: Characters to be ignored in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `ascii()`
+#### `ascii()`
 
 Validate if the environment variable value contains valid ASII characters.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `base64()`
+#### `base64()`
 
 Validate if the environment variable value contains a valid base64 value.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
 - **urlSafe**: Validate if the value is url safe.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `boolean()`
+#### `boolean()`
 
 Validate if the environment variable value is boolean and parse it to boolean.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **trueValue**: The value that will be compared to the variable to determine if it is true or false. Default "true".
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `date()`
+#### `date()`
 
 Validate if the environment variable value contains a valid date.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **format**: The format that will be used to validate the date.
@@ -190,11 +190,11 @@ Validate if the environment variable value contains a valid date.
 - **delimiters**: An array of allowed date delimiters, default: ['/', '-'].
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `email()`
+#### `email()`
 
 Validate if the environment variable value is a valid email.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **allowDisplayName**: If it's true, the validator will also match `Display Name <email-address>`.
@@ -210,101 +210,101 @@ Validate if the environment variable value is a valid email.
 - **blacklistedChars**: If blacklisted_chars receives a string, then the validator will reject emails that include any of the characters in the string, in the name part.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `enumm()`
+#### `enumm()`
 
 Validate if the environment variable value is one of the values of the enum.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **enum**: The list of values used to validate the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `float()`
+#### `float()`
 
 Validate if the environment variable value is a valid float number and parse it to float.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **min**: The min value allowed of the variable.
 - **max**: The max value allowed of the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `hash()`
+#### `hash()`
 
 Validate if the environment variable value is a valid hash.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **algorithm**: The algorithm used to validate the hash.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `hex()`
+#### `hex()`
 
 Validate if the environment variable value is a valid hexadecimal value.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `ip()`
+#### `ip()`
 
 Validate if the environment variable value is a valid IP address.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **version**: The IP version used to validate the IP.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `ipRange()`
+#### `ipRange()`
 
 Validate if the environment variable value is a valid IP range.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **version**: The IP version used to validate the IP range.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `iso8601()`
+#### `iso8601()`
 
 Validate if the environment variable value is a valid ISO8601 date.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **strict**: If it's true, performs additional checks for valid dates, e.g. invalidates dates like `2009-02-29`.
 - **strictSeparator**: If it's true, date strings with date and time separated by anything other than a T will be invalid.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `json()`
+#### `json()`
 
 Validate if the environment variable value is a valid JSON and parse it using JSON.parse.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `jwt()`
+#### `jwt()`
 
 Validate if the environment variable value is a valid JWT token.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `mac()`
+#### `mac()`
 
 Validate if the environment variable value is a valid MAC address.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **noColons**: *[DEPRECATED]* use no_separators instead. If it's true, the validator will allow MAC addresses without the colons. Also, it allows the use of hyphens or spaces. e.g. `01 02 03 04 05 ab` or `01-02-03-04-05-ab`.
@@ -312,62 +312,62 @@ Validate if the environment variable value is a valid MAC address.
 - **eui**: Setting `eui` allows for validation against EUI-48 or EUI-64 instead of both.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `number()`
+#### `number()`
 
 Validate if the environment variable value is a valid number and parse it to number.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **min**: The min value allowed of the variable.
 - **max**: The max value allowed of the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `numeric()`
+#### `numeric()`
 
 Validate if the environment variable value is numeric value.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **noSymbols**: If it's true, the validator will reject numeric strings that feature a symbol (e.g. `+`, `-`, or `.`).
 - **locale**: Locale used in the validation.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `port()`
+#### `port()`
 
 Validate if the environment variable value is a valid PORT.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `regex()`
+#### `regex()`
 
 Validate if the environment variable value is a valid string.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **regex**: The regex used to validate the variable.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `string()`
+#### `string()`
 
 Validate if the environment variable value is a valid string.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **length**: The length of the value.
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `url()`
+#### `url()`
 
 Validate if the environment variable value is a valid url.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **protocols**: valid protocols can be modified with this option.
@@ -388,11 +388,11 @@ Validate if the environment variable value is a valid url.
 - **maxAllowedLength**: if set, isURL will not allow URLs longer than the specified value (default is 2084 that IE maximum URL length).
 - **defaultValue**: Value that will be returned if the variable is undefined.
 
-### `uuid()`
+#### `uuid()`
 
 Validate if the environment variable value is a valid UUID.
 
-#### *Options*
+##### *Options*
 
 - **optional**: If it's true, only validate the variable if it is defined.
 - **version**: UUID version used to validate the value.
