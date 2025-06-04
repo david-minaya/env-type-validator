@@ -1,0 +1,6 @@
+images
+src
+tests
+eslint.config.mjs
+jest.config.js
+tsconfig.json
